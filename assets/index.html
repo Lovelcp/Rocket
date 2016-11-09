@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rocket</title>
+  <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="css/application.css">
+  <!-- Insert this line above script imports  -->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script src="js/jquery-3.1.0.min.js"></script>
+  <script src="js/semantic.min.js"></script>
+  <!-- Insert this line after script imports -->
+  <script>if (window.module) module = window.module;</script>
+</head>
+<body>
+<div id="header">
+  <h1 class="ui center aligned header">Rocket</h1>
+</div>
+
+<div>
+  <div class="ui stackable two column divided grid container">
+    <div class="row">
+      <button id="open-file" class="ui secondary button">Open File</button>
+      <button class="ui button">Cancel</button>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui form">
+          <div class="field">
+            <label>Text</label>
+            <textarea class="raw-markdown"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="rendered-html"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="content" class="ui container">
+  <div id="settings">
+    <h4 class="ui horizontal divider header"><i class="settings icon"></i> Settings </h4>
+    <div class="ui vertical pointing menu">
+      <a class="item active">Home </a>
+      <a class="item">Messages </a>
+      <a class="item">Friends </a>
+    </div>
+    <div class="ui grid">
+      <div class="four wide column">
+        <div class="ui vertical fluid tabular menu">
+          <a class="item active">Bio </a>
+          <a class="item">Pics </a>
+          <a class="item">Companies </a>
+          <a class="item">Links </a>
+        </div>
+      </div>
+      <div class="twelve wide stretched column">
+        <div class="ui segment">This is an stretched grid column. This segment will always match the tab height </div>
+      </div>
+    </div>
+
+    <div class="ui grey segment">
+      <h4 class="ui header">SSH</h4>
+      <form class="ui form">
+        <div class="two fields">
+          <div class="field">
+            <label>Host</label>
+            <input type="text" name="ssh[host]" placeholder="host">
+          </div>
+          <div class="field">
+            <label>Port</label>
+            <input type="number" name="ssh[port]" placeholder="port">
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Username</label>
+            <input type="text" name="ssh[username]" placeholder="username">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" name="ssh[password]" placeholder="password">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="ui grey segment">
+      <h4 class="ui header">Memcache</h4>
+      <form class="ui form">
+        <div class="two fields">
+          <div class="field">
+            <label>Host</label>
+            <input type="text" name="ssh[host]" placeholder="host">
+          </div>
+          <div class="field">
+            <label>Port</label>
+            <input type="number" name="ssh[port]" placeholder="port">
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Username</label>
+            <input type="text" name="ssh[username]" placeholder="username">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" name="ssh[password]" placeholder="password">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="query">
+    <h4 class="ui horizontal divider header"><i class="find icon"></i> Query </h4>
+    <div class="ui right action left icon input loading">
+      <i class="search icon"></i>
+      <input type="text" name="key" placeholder="key">
+      <div class="ui primary button" id="query-button">Go</div>
+    </div>
+  </div>
+
+  <div id="result">
+    <h4 class="ui horizontal divider header"><i class="browser icon"></i> Result </h4>
+    <table class="ui selectable celled table">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>2016-10-03</td>
+        <td>aaaa</td>
+        <td>1234</td>
+      </tr>
+      <tr>
+        <td>2016-10-02</td>
+        <td>bbbb</td>
+        <td>哈哈哈</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+
+<script>
+  // You can also require other files to run in this process
+  require('../app/renderer');
+
+  $('.menu .item').tab();
+</script>
+</html>

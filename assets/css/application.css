@@ -1,0 +1,15 @@
+body, input {
+    font: menu;
+}
+
+#header, #content {
+    margin-top: 3em;
+}
+
+#result, #query {
+    margin-top: 3em;
+}
+
+#result {
+    margin-bottom: 3em;
+}

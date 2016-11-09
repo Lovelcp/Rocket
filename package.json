@@ -1,0 +1,22 @@
+{
+  "name": "rocket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./app/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lovelcp/Rocket.git"
+  },
+  "author": "KissRain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lovelcp/Rocket/issues"
+  },
+  "homepage": "https://github.com/Lovelcp/Rocket#readme",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}
