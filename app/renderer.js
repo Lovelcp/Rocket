@@ -1,12 +1,5 @@
-var CryptoJS = require("crypto-js");
-var moment = require('moment');
 
-function showUnixTimestamp() {
-    $('#input-current-timestamp').val(moment().unix());
-}
-setInterval(() => {
-    showUnixTimestamp();
-}, 1000); //每隔一秒执行一次
+
 
 let myNotification = new Notification('Rocket定时提醒', {
     body: '该点外卖啦'
@@ -15,29 +8,6 @@ let myNotification = new Notification('Rocket定时提醒', {
 myNotification.onclick = () => {
     console.log('Notification clicked')
 };
-
-//
-// 加密解密 https://github.com/brix/crypto-js
-//
-/**
- * MD5加密
- */
-$('#button-md5-crypt').click(() => {
-    $('#text-hash-crypt-after').val(CryptoJS.MD5($('#text-hash-crypt-pre').val()).toString());
-});
-/**
- * SHA1加密
- */
-$('#button-sha1-crypt').click(() => {
-    $('#text-hash-crypt-after').val(CryptoJS.SHA1($('#text-hash-crypt-pre').val().toString()));
-});
-/**
- * SHA256加密
- */
-$('#button-sha256-crypt').click(() => {
-    $('#text-hash-crypt-after').val(CryptoJS.SHA256($('#text-hash-crypt-pre').val().toString()));
-});
-
 
 //
 // 编解码

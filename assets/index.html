@@ -42,23 +42,97 @@
     <div class="twelve wide stretched column">
       <!-- 时间戳转换 -->
       <div class="ui tab active" data-tab="time-format">
-        <form class="ui form">
-          <div class="field">
+        <div class="ui form">
+          <!-- 当前时间 -->
+          <div class="inline fields">
+            <label>当前时间</label>
+            <div class="field">
+              <input id="input-current-format-time" type="text" placeholder="当前时间">
+            </div>
             <label>当前时间戳</label>
-            <input id="input-current-timestamp" type="text">
+            <div class="field">
+              <input id="input-current-timestamp" type="text" placeholder="当前时间戳">
+            </div>
           </div>
-        </form>
+          <div class="field">
+            <button id="button-time-format-current-start" class="ui teal button">开始</button>
+            <button id="button-time-format-current-stop" class="ui teal button">停止</button>
+            <button id="button-time-format-copy-current-format-time" class="ui teal button">拷贝当前时间</button>
+            <button id="button-time-format-copy-current-timestamp" class="ui teal button">拷贝当前时间戳</button>
+          </div>
+
+          <div class="ui section divider"></div>
+
+          <!-- 自定义转换 -->
+          <div class="equal width fields">
+            <div class="field">
+              <label>北京时间</label>
+              <input type="number">
+            </div>
+            <div class="field">
+              <!--<label>月</label>-->
+              <input type="number">
+            </div>
+            <div class="field">
+              <!--<label>日</label>-->
+              <input type="number">
+            </div>
+            <div class="field">
+              <!--<label>时</label>-->
+              <input type="number">
+            </div>
+            <div class="field">
+              <!--<label>分</label>-->
+              <input type="number">
+            </div>
+            <div class="field">
+              <!--<label>秒</label>-->
+              <input type="number">
+            </div>
+          </div>
+          <div class="inline fields">
+            <label>北京时间</label>
+            <div class="field">
+              <input type="number">
+            </div>
+            <div class="field">
+              <input type="number">
+            </div>
+            <div class="field">
+              <input type="number">
+            </div>
+            <div class="field">
+              <input type="number">
+            </div>
+            <div class="field">
+              <input type="number">
+            </div>
+            <div class="field">
+              <input type="number">
+            </div>
+          </div>
+          <div class="field">
+            <button class="ui teal button">北京时间=>时间戳</button>
+          </div>
+          <div class="field">
+            <input type="number">
+          </div>
+        </div>
+
+        <div class="ui form">
+
+        </div>
       </div>
 
       <!-- 加密解密 -->
       <div class="ui tab" data-tab="encrypt-decrypt">
         <div class="ui tabular menu">
           <a class="item active" data-tab="hash-crypt">哈希</a>
-          <a class="item" data-tab="aes-crypt">AES</a>
+          <a class="item" data-tab="aes-series-crypt">AES系列</a>
         </div>
 
         <!-- 哈希 -->
-        <div class="ui tab active" data-tab="md5-crypt">
+        <div class="ui tab active" data-tab="hash-crypt">
           <div class="ui form">
             <div class="two fields">
               <div class="field">
@@ -84,8 +158,8 @@
           </div>
         </div>
 
-        <!-- sha1加解密 -->
-        <div class="ui tab" data-tab="sha1-crypt">
+        <!-- AES系列 -->
+        <div class="ui tab" data-tab="aes-series-crypt">
 
         </div>
       </div>
@@ -160,10 +234,11 @@
 <script>
   // You can also require other files to run in this process
   require('../app/renderer');
+  require('../app/time_format');
+  require('../app/crypt');
+
   $('#example1').calendar(); // semantic-ui日期选择插件 https://github.com/mdehoog/Semantic-UI-Calendar
-  //  $('.menu .item').tab();
-  $('.menu .item')
-          .tab()
-  ;
+
+  $('.menu .item').tab();
 </script>
 </html>
