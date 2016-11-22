@@ -3,150 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <title>Rocket</title>
-  <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="css/semantic.css">
+  <link rel="stylesheet" type="text/css" href="css/calendar.css">
   <link rel="stylesheet" type="text/css" href="css/application.css">
   <!-- Insert this line above script imports  -->
-  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script>if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+  }</script>
   <script src="js/jquery-3.1.0.min.js"></script>
-  <script src="js/semantic.min.js"></script>
+  <script src="js/semantic.js"></script>
+  <script src="js/calendar.js"></script>
   <!-- Insert this line after script imports -->
   <script>if (window.module) module = window.module;</script>
 </head>
 <body>
-<div id="header">
-  <h1 class="ui center aligned header">Rocket</h1>
-</div>
-
-<div>
-  <div class="ui stackable two column divided grid container">
-    <div class="row">
-      <button id="open-file" class="ui secondary button">Open File</button>
-      <button class="ui button">Cancel</button>
-    </div>
-    <div class="row">
-      <div class="column">
-        <div class="ui form">
-          <div class="field">
-            <label>Text</label>
-            <textarea class="raw-markdown"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="rendered-html"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
+<!--<h3>Input</h3>-->
+<!--<div class="ui calendar" id="example1">-->
+<!--<div class="ui input left icon">-->
+<!--<i class="calendar icon"></i>-->
+<!--<input type="text" placeholder="Date/Time">-->
+<!--</div>-->
+<!--</div>-->
 <div id="content" class="ui container">
-  <div id="settings">
-    <h4 class="ui horizontal divider header"><i class="settings icon"></i> Settings </h4>
-    <div class="ui vertical pointing menu">
-      <a class="item active">Home </a>
-      <a class="item">Messages </a>
-      <a class="item">Friends </a>
-    </div>
-    <div class="ui grid">
-      <div class="four wide column">
-        <div class="ui vertical fluid tabular menu">
-          <a class="item active">Bio </a>
-          <a class="item">Pics </a>
-          <a class="item">Companies </a>
-          <a class="item">Links </a>
-        </div>
-      </div>
-      <div class="twelve wide stretched column">
-        <div class="ui segment">This is an stretched grid column. This segment will always match the tab height </div>
+  <!-- 导航栏 -->
+  <div class="ui grid">
+    <div class="four wide column">
+      <div class="ui vertical fluid tabular menu">
+        <a class="item active" data-tab="time-format">时间戳转换 </a>
+        <a class="item" data-tab="encrypt-decrypt">加密/解密 </a>
+        <a class="item" data-tab="encoding-format">编码转换 </a>
+        <a class="item" data-tab="beautify-format">格式美化 </a>
+        <a class="item" data-tab="network">网络 </a>
+        <a class="item" data-tab="life-helper">生活助手 </a>
       </div>
     </div>
 
-    <div class="ui grey segment">
-      <h4 class="ui header">SSH</h4>
-      <form class="ui form">
-        <div class="two fields">
+    <div class="twelve wide stretched column">
+      <!-- 时间戳转换 -->
+      <div class="ui tab active" data-tab="time-format">
+        <form class="ui form">
           <div class="field">
-            <label>Host</label>
-            <input type="text" name="ssh[host]" placeholder="host">
+            <label>当前时间戳</label>
+            <input id="input-current-timestamp" type="text">
           </div>
-          <div class="field">
-            <label>Port</label>
-            <input type="number" name="ssh[port]" placeholder="port">
-          </div>
-        </div>
-        <div class="two fields">
-          <div class="field">
-            <label>Username</label>
-            <input type="text" name="ssh[username]" placeholder="username">
-          </div>
-          <div class="field">
-            <label>Password</label>
-            <input type="password" name="ssh[password]" placeholder="password">
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
 
-    <div class="ui grey segment">
-      <h4 class="ui header">Memcache</h4>
-      <form class="ui form">
-        <div class="two fields">
-          <div class="field">
-            <label>Host</label>
-            <input type="text" name="ssh[host]" placeholder="host">
-          </div>
-          <div class="field">
-            <label>Port</label>
-            <input type="number" name="ssh[port]" placeholder="port">
+      <!-- 加密解密 -->
+      <div class="ui tab" data-tab="encrypt-decrypt">
+        <div class="ui tabular menu">
+          <a class="item active" data-tab="hash-crypt">哈希</a>
+          <a class="item" data-tab="aes-crypt">AES</a>
+        </div>
+
+        <!-- 哈希 -->
+        <div class="ui tab active" data-tab="md5-crypt">
+          <div class="ui form">
+            <div class="two fields">
+              <div class="field">
+                <label>加密前</label>
+                <textarea placeholder="请输入需要加密的内容" id="text-hash-crypt-pre"></textarea>
+              </div>
+              <div class="field">
+                <label>加密后</label>
+                <textarea placeholder="加密后的结果" id="text-hash-crypt-after"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <button class="ui teal button" id="button-md5-crypt">
+                MD5
+              </button>
+              <button class="ui teal button" id="button-sha1-crypt">
+                SHA1
+              </button>
+              <button class="ui teal button" id="button-sha256-crypt">
+                SHA256
+              </button>
+            </div>
           </div>
         </div>
-        <div class="two fields">
-          <div class="field">
-            <label>Username</label>
-            <input type="text" name="ssh[username]" placeholder="username">
-          </div>
-          <div class="field">
-            <label>Password</label>
-            <input type="password" name="ssh[password]" placeholder="password">
+
+        <!-- sha1加解密 -->
+        <div class="ui tab" data-tab="sha1-crypt">
+
+        </div>
+      </div>
+
+      <!-- 编码转换 -->
+      <div class="ui tab" data-tab="encoding-format">
+        <div class="ui tabular menu">
+          <a class="item active" data-tab="url-format">URL</a>
+          <a class="item" data-tab="unicode-format">Unicode</a>
+          <a class="item" data-tab="base64-format">Base64</a>
+        </div>
+        <div class="ui tab active" data-tab="url-format">
+          <!-- URL编解码 -->
+          <div class="ui form">
+            <div class="two fields">
+              <div class="field">
+                <label>转换前</label>
+                <textarea placeholder="请输入需要转换的内容" id="text-url-format-pre"></textarea>
+              </div>
+              <div class="field">
+                <label>转换后</label>
+                <textarea placeholder="转换后的结果" id="text-url-format-after"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <label>编码</label>
+              <div class="two buttons">
+                <button class="ui teal button" id="button-url-encode"><span data-tooltip="该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。
+该方法的目的是对 URI 进行完整的编码，因此对以下在 URI 中具有特殊含义的 ASCII 标点符号，encodeURI() 函数是不会进行转义的：;/?:@&=+$,#" data-variation="wide"><i
+                        class="info circle icon"></i></span>encode URL
+                </button>
+                <button class="ui teal button" id="button-url-encode-components">encode URL components</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>解码</label>
+              <div class="two buttons">
+                <button class="ui blue button" id="button-url-decode">decode URL</button>
+                <button class="ui blue button" id="button-url-decode-components">decode URL components</button>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
-  </div>
 
-  <div id="query">
-    <h4 class="ui horizontal divider header"><i class="find icon"></i> Query </h4>
-    <div class="ui right action left icon input loading">
-      <i class="search icon"></i>
-      <input type="text" name="key" placeholder="key">
-      <div class="ui primary button" id="query-button">Go</div>
-    </div>
-  </div>
+        <!-- Unicode编解码 -->
+        <div class="ui tab " data-tab="unicode-format">
 
-  <div id="result">
-    <h4 class="ui horizontal divider header"><i class="browser icon"></i> Result </h4>
-    <table class="ui selectable celled table">
-      <thead>
-      <tr>
-        <th>Date</th>
-        <th>Key</th>
-        <th>Value</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>2016-10-03</td>
-        <td>aaaa</td>
-        <td>1234</td>
-      </tr>
-      <tr>
-        <td>2016-10-02</td>
-        <td>bbbb</td>
-        <td>哈哈哈</td>
-      </tr>
-      </tbody>
-    </table>
+        </div>
+
+        <!-- Base64编解码 -->
+        <div class="ui tab " data-tab="base64-format">
+
+        </div>
+      </div>
+      <div class="ui tab" data-tab="beautify-format">格式美化</div>
+      <div class="ui tab" data-tab="network">an This segment will always match the tab height</div>
+      <div class="ui tab" data-tab="life-helper">
+        <div class="ui tabular menu">
+          <a class="item active" data-tab="first">定时提醒</a>
+          <a class="item" data-tab="second">Second</a>
+          <a class="item" data-tab="third">Third</a>
+        </div>
+        <div class="ui tab active" data-tab="first">First</div>
+        <div class="ui tab " data-tab="second">Second</div>
+        <div class="ui tab " data-tab="third">Third</div>
+      </div>
+    </div>
   </div>
 </div>
 </body>
@@ -154,7 +160,10 @@
 <script>
   // You can also require other files to run in this process
   require('../app/renderer');
-
-  $('.menu .item').tab();
+  $('#example1').calendar(); // semantic-ui日期选择插件 https://github.com/mdehoog/Semantic-UI-Calendar
+  //  $('.menu .item').tab();
+  $('.menu .item')
+          .tab()
+  ;
 </script>
 </html>

@@ -1,5 +1,6 @@
 body, input {
     font: menu;
+    background-color: #fdfdfd;
 }
 
 #header, #content {
