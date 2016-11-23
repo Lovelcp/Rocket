@@ -69,3 +69,60 @@ $('#button-time-format-copy-current-format-time').click(() => {
 $('#button-time-format-copy-current-timestamp').click(() => {
     clipboard.writeText($('#input-current-timestamp').val());
 });
+
+/**
+ * 绑定时间戳转北京时间
+ */
+$('#button-timestamp-to-format-time').click(() => {
+    timestampToFormatTime($('#input-timestamp').val());
+});
+
+/**
+ * 时间戳转北京时间
+ * @param timestamp
+ */
+function timestampToFormatTime(timestamp) {
+    var parser = moment.unix(timestamp);
+    if (parser == null) {
+        return;
+    }
+    $('#input-format-time-year').val(parser.weekYear());
+    $('#input-format-time-month').val(parser.month() + 1); // 月份从0开始
+    $('#input-format-time-day').val(parser.date());
+    $('#input-format-time-hour').val(parser.hour());
+    $('#input-format-time-min').val(parser.minute());
+    $('#input-format-time-sec').val(parser.second());
+}
+
+/**
+ * 绑定北京时间转时间戳
+ */
+$('#button-format-time-to-timestamp').click(() => {
+    formatTimeToTimestamp();
+});
+
+/**
+ * 北京时间转时间戳
+ */
+function formatTimeToTimestamp() {
+    var year = $('#input-format-time-year').val();
+    var month = $('#input-format-time-month').val();
+    var day = $('#input-format-time-day').val();
+    var hour = $('#input-format-time-hour').val();
+    var min = $('#input-format-time-min').val();
+    var sec = $('#input-format-time-sec').val();
+    var parser = moment(`${year}-${month}-${day} ${hour}:${min}:${sec}`, "YYYY-MM-DD HH:mm:ss");
+    if (parser.isValid()) {
+        var timestamp = moment(`${year}-${month}-${day} ${hour}:${min}:${sec}`, "YYYY-MM-DD HH:mm:ss").unix();
+        $('#input-timestamp').val(timestamp);
+    }
+    else {
+        alert("请输入正确的时间格式");
+    }
+}
+
+/**
+ * 启动时直接填充当前时间戳
+ */
+timestampToFormatTime(moment().unix());
+formatTimeToTimestamp();

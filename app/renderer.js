@@ -1,6 +1,3 @@
-
-
-
 let myNotification = new Notification('Rocket定时提醒', {
     body: '该点外卖啦'
 });
