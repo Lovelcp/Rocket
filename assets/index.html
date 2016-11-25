@@ -207,14 +207,14 @@
 
         <!-- json 美化 -->
         <div class="ui tab active" data-tab="json-beautify">
-          <div class="ui form">
-            <div class="field">
-              <div id="jsoneditor-pre"></div>
-              <!--<label>美化前</label>-->
-              <!--<textarea placeholder="请输入需要美化的json字符串" id="text-json-beautify-pre"></textarea>-->
-            </div>
-            <button class="ui teal button" id="button-json-beautify">美化</button>
+          <div class="field">
+            <div id="jsoneditor-pre"></div>
           </div>
+          <div class="ui hidden divider"></div>
+          <button class="ui teal icon button" id="button-json-beautify-down"><i class="arrow down icon"></i></button>
+          <button class="ui teal icon button" id="button-json-beautify-up"><i class="arrow up icon"></i></button>
+          <button class="ui teal button" id="button-json-copy">拷贝</button>
+          <div class="ui hidden divider"></div>
           <div id="jsoneditor-after"></div>
         </div>
 
