@@ -5,6 +5,7 @@
   <title>Rocket</title>
   <link rel="stylesheet" type="text/css" href="css/semantic.css">
   <link rel="stylesheet" type="text/css" href="css/calendar.css">
+  <link rel="stylesheet" type="text/css" href="css/jsoneditor.css">
   <link rel="stylesheet" type="text/css" href="css/application.css">
   <!-- Insert this line above script imports  -->
   <script>if (typeof module === 'object') {
@@ -14,6 +15,7 @@
   <script src="js/jquery-3.1.0.min.js"></script>
   <script src="js/semantic.js"></script>
   <script src="js/calendar.js"></script>
+  <script src="js/jsoneditor.js"></script>
   <!-- Insert this line after script imports -->
   <script>if (window.module) module = window.module;</script>
 </head>
@@ -195,8 +197,35 @@
 
         </div>
       </div>
-      <div class="ui tab" data-tab="beautify-format">格式美化</div>
+
+      <!-- 格式美化 -->
+      <div class="ui tab" data-tab="beautify-format">
+        <div class="ui tabular menu">
+          <a class="item active" data-tab="json-beautify">JSON美化</a>
+          <a class="item" data-tab="sql-beautify">SQL美化</a>
+        </div>
+
+        <!-- json 美化 -->
+        <div class="ui tab active" data-tab="json-beautify">
+          <div class="ui form">
+            <div class="field">
+              <div id="jsoneditor-pre"></div>
+              <!--<label>美化前</label>-->
+              <!--<textarea placeholder="请输入需要美化的json字符串" id="text-json-beautify-pre"></textarea>-->
+            </div>
+            <button class="ui teal button" id="button-json-beautify">美化</button>
+          </div>
+          <div id="jsoneditor-after"></div>
+        </div>
+
+        <!-- sql 美化 -->
+        <div class="ui tab " data-tab="sql-beautify">sql</div>
+      </div>
+
+      <!-- 网络助手 -->
       <div class="ui tab" data-tab="network">an This segment will always match the tab height</div>
+
+      <!-- 生活助手 -->
       <div class="ui tab" data-tab="life-helper">
         <div class="ui tabular menu">
           <a class="item active" data-tab="first">定时提醒</a>
@@ -217,6 +246,7 @@
   require('../app/renderer');
   require('../app/time_format');
   require('../app/crypt');
+  require('../app/beautify');
 
   $('#example1').calendar(); // semantic-ui日期选择插件 https://github.com/mdehoog/Semantic-UI-Calendar
 
