@@ -3,6 +3,7 @@
 // 用到了jsoneditor插件 https://github.com/josdejong/jsoneditor
 //
 const {clipboard} = require('electron');
+const sqlFormatter = require('sql-formatter');
 
 // 美化前的jsoneditor
 var preContainer = document.getElementById("jsoneditor-pre");
@@ -37,4 +38,11 @@ $('#button-json-beautify-up').click(() => {
  */
 $('#button-json-copy').click(() => {
     clipboard.writeText(afterEditor.get());
+});
+
+/**
+ * 绑定sql美化事件
+ */
+$('#button-sql-beautify').click(() => {
+    $('#text-sql-after').val(sqlFormatter.format($('#text-sql-pre').val()));
 });

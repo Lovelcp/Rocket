@@ -219,7 +219,26 @@
         </div>
 
         <!-- sql 美化 -->
-        <div class="ui tab " data-tab="sql-beautify">sql</div>
+        <div class="ui tab " data-tab="sql-beautify">
+          <div class="ui form">
+            <div class="field">
+              <label>美化前</label>
+              <textarea placeholder="请输入需要美化的SQL" id="text-sql-pre"></textarea>
+            </div>
+            <div class="field">
+              <label>美化后</label>
+              <textarea placeholder="美化后的结果" id="text-sql-after"></textarea>
+            </div>
+            <div class="field">
+              <button class="ui teal button" id="button-sql-beautify">
+                美化
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 语法高亮 -->
+        <div class="ui tab " data-tab="syntax-highlight">语法高亮</div>
       </div>
 
       <!-- 网络助手 -->
