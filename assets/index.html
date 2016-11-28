@@ -203,13 +203,12 @@
         <div class="ui tabular menu">
           <a class="item active" data-tab="json-beautify">JSON美化</a>
           <a class="item" data-tab="sql-beautify">SQL美化</a>
+          <a class="item" data-tab="syntax-highlight">语法高亮</a>
         </div>
 
         <!-- json 美化 -->
         <div class="ui tab active" data-tab="json-beautify">
-          <div class="field">
-            <div id="jsoneditor-pre"></div>
-          </div>
+          <div id="jsoneditor-pre"></div>
           <div class="ui hidden divider"></div>
           <button class="ui teal icon button" id="button-json-beautify-down"><i class="arrow down icon"></i></button>
           <button class="ui teal icon button" id="button-json-beautify-up"><i class="arrow up icon"></i></button>
@@ -238,11 +237,28 @@
         </div>
 
         <!-- 语法高亮 -->
-        <div class="ui tab " data-tab="syntax-highlight">语法高亮</div>
+        <div class="ui tab " data-tab="syntax-highlight">
+
+        </div>
       </div>
 
       <!-- 网络助手 -->
-      <div class="ui tab" data-tab="network">an This segment will always match the tab height</div>
+      <div class="ui tab" data-tab="network">
+        <div class="ui tabular menu">
+          <a class="item active" data-tab="ip-location">IP地址查询</a>
+          <a class="item " data-tab="dns-tool">域名查IP</a>
+        </div>
+
+        <!-- IP地址查询 -->
+        <div class="ui tab active" data-tab="ip-location">
+          <div class="ui action input">
+            <input id="input-ip-location" type="text" placeholder="请输入IP地址">
+            <button id="button-ip-location" class="ui icon button">
+              <i class="search icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
 
       <!-- 生活助手 -->
       <div class="ui tab" data-tab="life-helper">
@@ -266,6 +282,7 @@
   require('../app/time_format');
   require('../app/crypt');
   require('../app/beautify');
+  require('../app/network');
 
   $('#example1').calendar(); // semantic-ui日期选择插件 https://github.com/mdehoog/Semantic-UI-Calendar
 
